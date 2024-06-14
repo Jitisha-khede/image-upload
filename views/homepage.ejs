@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploads</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .upload-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .file-input {
+            display: none;
+        }
+        .file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .file-label:hover {
+            background: #0056b3;
+        }
+        .file-name {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .submit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <form class="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        <label for="profileImage" class="file-label">Choose File</label>
+        <input type="file" name="profileImage" id="profileImage" class="file-input" />
+        <div class="file-name" id="fileName">No file chosen</div>
+        <button type="submit" class="submit-button">Upload</button>
+    </form>
+
+    <script>
+        document.getElementById('profileImage').addEventListener('change', function() {
+            var fileName = document.getElementById('profileImage').files[0]?.name || 'No file chosen';
+            document.getElementById('fileName').textContent = fileName;
+        });
+    </script>
+</body>
+</html>
